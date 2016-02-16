@@ -50,6 +50,10 @@ Features:
 4. Our configuration settings allowing you to customize the way users are prompted to subscribe and the notifications they receive.
 
 == Changelog ==
+= 1.8.1 =
+- Clarified subdomain instructions to not include the '.onesignal.com' part
+- Disabled automatic posting from 3rd party plugins now that we support custom post types
+
 = 1.8.0 =
 - Add bell color customization
 - Add bell offset position customization

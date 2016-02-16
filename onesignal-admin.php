@@ -221,15 +221,9 @@ class OneSignal_Admin {
     
     $onesignal_wp_settings = OneSignal::get_onesignal_settings();
 
-    if (isset($_POST['has_onesignal_setting'])) {
-      if (array_key_exists('send_onesignal_notification', $_POST)) {
-        $send_onesignal_notification = $_POST['send_onesignal_notification'];
-      } else {
-        $send_onesignal_notification = false;
-      }
-    }
-    elseif ($old_status !== "publish") {
-      $send_onesignal_notification = $onesignal_wp_settings['notification_on_post_from_plugin'];
+    $send_onesignal_notification = false;
+    if (isset($_POST['has_onesignal_setting']) && array_key_exists('send_onesignal_notification', $_POST)) {
+      $send_onesignal_notification = $_POST['send_onesignal_notification'];
     }
     
     if ($send_onesignal_notification === true || $send_onesignal_notification === "true") {  

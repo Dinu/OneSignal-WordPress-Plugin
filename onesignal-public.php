@@ -1,7 +1,8 @@
 <?php
+//include(dirname(__DIR__).'/onesignal-free-web-push-notifications/ChromePhp.php');
 
 function debug($var) {
-  //print "<div style='position: absolute; top: 30px; left: 160px; font-family: Monaco, monospace; font-size: 13px; background: whitesmoke; border-bottom-right-radius: 8px; color: black;font-weight: 500; z-index: 9999999; padding: 1em; margin: 0em;'><pre>"; print_r($var); echo "</pre></div>";
+  print "<div style='position: absolute; top: 30px; left: 160px; font-family: Monaco, monospace; font-size: 13px; background: whitesmoke; border-bottom-right-radius: 8px; color: black;font-weight: 500; z-index: 9999999; padding: 1em; margin: 0em;'><pre>"; print_r($var); echo "</pre></div>";
 }
 
 function print_settings() {
@@ -110,10 +111,17 @@ class OneSignal_Public {
         OneSignal.SERVICE_WORKER_PATH = "OneSignalSDKWorker.js.php";
         OneSignal.SERVICE_WORKER_PARAM = { scope: '/' };
 
+        <?php echo '<!-- BearTai Debugging -->' . "\n" ?>
+        <?php echo '<!-- get_bloginfo(\'name\'): ' . get_bloginfo('name') . ' -->' . "\n" ?>
+        <?php echo '<!-- html_entity_decode(get_bloginfo(\'name\')): ' . html_entity_decode(get_bloginfo('name')) . '-->' . "\n" ?>
+        <?php echo '<!-- $onesignal_wp_settings[\'default_title\']: ' . $onesignal_wp_settings['default_title'] . '-->' . "\n" ?>
+        <?php echo '<!-- html_entity_decode($onesignal_wp_settings[\'default_title\']): ' . html_entity_decode($onesignal_wp_settings['default_title']) . '-->' . "\n" ?>
         <?php if ($onesignal_wp_settings['default_title'] != "") {
+          //echo 'Using "default_title"' . '\n';
           echo "OneSignal.setDefaultTitle(\"" . html_entity_decode($onesignal_wp_settings['default_title']) . "\");\n";
         }
         else {
+          //echo 'Using "get_bloginfo()"' . '<br/>';
           echo "OneSignal.setDefaultTitle(\"" . html_entity_decode(get_bloginfo( 'name' )) . "\");\n";
         }
 
